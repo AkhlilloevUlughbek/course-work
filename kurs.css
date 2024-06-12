@@ -1,0 +1,362 @@
+header {
+    background-color: #342628;
+    color: #fff;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0 0 20px 20px;
+    margin-bottom: -10px;
+    height: 100px;
+
+}
+
+a {
+    text-decoration: none;
+    /* Убрать подчеркивание */
+    color: inherit;
+    /* Использовать цвет текста по умолчанию */
+}
+
+#img {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-top: -20px;
+    margin-left: px;
+}
+
+body {
+    background-color: rgb(190, 190, 184);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+    transition: background-color 1s ease;
+}
+
+footer {
+    margin-top: auto;
+    border-radius: 20px 20px 0 0;
+    color: white;
+}
+
+#ssc {
+    margin-left: 28%;
+    font-size: 55px;
+
+}
+
+
+#btns1 {
+    float: right;
+    position: relative;
+    z-index: 1;
+    width: 120px;
+    height: 25px;
+    margin-top: -60px;
+    margin-right: 95px;
+    background-color: #e9e643;
+}
+
+#btns2 {
+    float: right;
+    position: relative;
+    z-index: 1;
+    width: 120px;
+    height: 25px;
+    margin-top: -35px;
+    margin-right: 95px;
+    background-color: white;
+}
+
+
+#login {
+    float: right;
+    margin-top: -60px;
+    margin-right: 120px;
+    background-color: #e9e643;
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 30px;
+    border-radius: 50px 0 0px 50px;
+    text-align: center;
+    border: none;
+    transition: background-color 0.5s ease;
+    transition: border-radius 0.1s ease;
+
+    position: relative;
+    z-index: 2;
+
+}
+
+#signup {
+    float: right;
+    margin-top: -60px;
+    background-color: #e9e643;
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 0px 50px 50px 0px;
+    text-align: center;
+    border: none;
+    transition: background-color 0.5s ease;
+    transition: border-radius 0.1s ease;
+    position: relative;
+    z-index: 3;
+
+}
+
+
+#login:hover {
+    background-color: white;
+    cursor: pointer;
+    z-index: 4;
+}
+
+#signup:hover {
+    background-color: white;
+    z-index: 4;
+    cursor: pointer;
+
+
+}
+
+
+#ssc span {
+    color: #e9e643;
+}
+
+h1 {
+    text-align: center;
+}
+
+P {
+    padding: 5px;
+}
+
+.science-areas {
+    display: flex;
+    width: 100%;
+    height: 150%;
+    /* flex-direction: row; */
+    /* border: 0px solid black; */
+    flex-wrap: wrap;
+    /* Разрешает перенос элементов на новую строку */
+    /* justify-content: flex-start;
+    justify-items: center; */
+    /* align-items: center; */
+    text-align: center;
+    /* background-color: #342628; */
+    border-radius: 20px 20px 0 0;
+    margin-top: 1.5%;
+}
+
+.area {
+    border: 1px;
+    /* solid #342628 ; */
+    width: 320px;
+    height: 200px;
+    margin: 0 auto;
+    /* margin-left: 20px; */
+    /* margin-right: 20px; */
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: white;
+    /* background-color: #788402; */
+    /* color: #e9e643; */
+
+    /* box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6); 
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 15px #e9e643; */
+    position: relative;
+    overflow: hidden;
+    /* transition: background-color 0.5s ease; */
+
+}
+
+.area:hover {
+
+    box-shadow: none;
+    cursor: pointer;
+    /* background-color: #e9e643; */
+    /* border:1px dashed black; */
+    /* border-radius: 25px; */
+}
+
+footer {
+    background-color: #342628;
+}
+
+
+#scccom {
+    position: relative;
+    margin-top: 28px;
+    /* text-align: center; */
+    /* border: 1px solid black; */
+    font-size: 30px;
+    /* width: 500px; */
+
+    /* margin-left: 33.5%; */
+    background-color: #342628;
+    border-radius: 20px 20px 20px 20px;
+    color: white;
+    height: 442px;
+}
+
+
+#scccom span {
+    color: #e9e643;
+}
+
+#scccom p {
+    text-align: center;
+    font-size: 30px;
+}
+
+#scccom1 span {
+    color: #e9e643;
+}
+#scccom1 p {
+    text-align: center;
+    font-size: 30px;
+}
+
+#scccom1 {
+    position: absolute;
+    
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 120px;
+    /* text-align: center; */
+    /* border: 1px solid black; */
+    font-size: 30px;
+    width: 500px;
+
+    /* margin-left: 0 auto; */
+    background-color: #342628;
+    border-radius: 20px 20px 20px 20px;
+    color: white;
+    height: 442px;
+}
+
+#login-form1, #login-form2, #login-form3{
+    float: left;
+    margin-top: 20px;
+    width: 350px;
+    /* border: 1px solid white; */
+    padding-left: 50px;   
+
+}
+#login-form1{
+    margin-left: 74px;
+}
+
+#username_or_email,
+#password,
+#username_or_email_l,
+#password_l,
+#reenterpassword,
+#firstname,
+#secondname,
+#organization,
+#country,
+#status,
+#category {
+    /* float: left; */
+    /* width: 440px; */
+    margin-left: 25px;
+    height: 30px;
+    font-size: 20px;
+}
+#username_or_email_l,
+#password_l{
+    width: 450px;
+}
+.form-group label {
+    margin-left: 25px;
+    font-size: 25px;
+}
+
+.forgot-password {
+    margin-left: 25px;
+    font-size: 20px;
+    margin-top: 5px;
+    color: #dad728;
+}
+
+.forgot-password a:hover {
+    color: white;
+
+}
+
+#logInto {
+    margin-top: 50px;
+    width: 450px;
+    height: 40px;
+    margin-left: 25px;
+    background-color: #e9e643;
+    border-radius: 20px;
+    border: none;
+    font-size: 20px;
+}
+
+#logInto:hover {
+    background-color: white;
+    cursor: pointer;
+
+}
+
+#signupto:hover {
+    background-color: white;
+    cursor: pointer;
+
+}
+
+#signupto {
+    position: absolute;
+    
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 280px;
+    width: 450px;
+    height: 40px;
+    /* margin-left: 0 auto; */
+    background-color: #e9e643;
+    border-radius: 20px;
+    border: none;
+    font-size: 20px;
+    display: block;
+}
+
+input[type="text"] {
+    width: 70%;
+    /* Ширина поля */
+    padding: 10px;
+    /* Отступы вокруг текста */
+    margin-bottom: 10px;
+    /* Отступ снизу */
+    border: 1px solid #ccc;
+    /* Граница поля */
+    border-radius: 4px;
+    /* Скругление углов */
+    box-sizing: border-box;
+    /* Учитывать границы в общей ширине */
+}
+
+/* Стили для поля ввода пароля */
+input[type="password"] {
+    width: 70%;
+    /* Ширина поля */
+    padding: 10px;
+    /* Отступы вокруг текста */
+    margin-bottom: 10px;
+    /* Отступ снизу */
+    border: 1px solid #ccc;
+    /* Граница поля */
+    border-radius: 4px;
+    /* Скругление углов */
+    box-sizing: border-box;
+    /* Учитывать границы в общей ширине */
+}
