@@ -11,10 +11,11 @@ import (
 	"time"
 )
 
-var DB *gorm.DB
+var db *gorm.DB
 
 func main() {
-	DB, err := gorm.Open(postgres.Open("host=%s port=%d user=%s password=%s database=%s sslmode=%s"), &gorm.Config{
+	var err error
+	db, err = gorm.Open(postgres.Open("host=localhost port=5432 user=scientist password=scientist database=researches sslmode=disable"), &gorm.Config{
 		Logger: logger.New(
 			log.New(os.Stdout, "\r\n", log.LstdFlags),
 			logger.Config{
