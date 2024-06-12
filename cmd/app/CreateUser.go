@@ -25,6 +25,16 @@ func CreateUser(c *gin.Context) {
 	otp := generateSixDigitCode()
 
 	if err = saveCodeToDB(newUser.Email, otp); err != nil {
+		log.Printf("failed to save user's otp: %v", err)
+		c.JSON(500, "something went wrong. Please try again later")
+		return
+	}
+	if err = saveUserToDb(newUser); err != nil {
+		if err = deleteCodeFromDB(newUser.Email); err != nil {
+			log.Printf("failed to delete record from db: %v", err)
+			c.JSON(500, "something went wrong. Please reach support")
+			return
+		}
 		log.Printf("failed to save user: %v", err)
 		c.JSON(500, "something went wrong. Please try again later")
 		return
@@ -32,6 +42,11 @@ func CreateUser(c *gin.Context) {
 
 	if err = sendToUser(newUser.Email, otp); err != nil {
 		if err = deleteCodeFromDB(newUser.Email); err != nil {
+			log.Printf("failed to delete record from db: %v", err)
+			c.JSON(500, "something went wrong. Please reach support")
+			return
+		}
+		if err = deleteUserFromDB(newUser.Email); err != nil {
 			log.Printf("failed to delete record from db: %v", err)
 			c.JSON(500, "something went wrong. Please reach support")
 			return
@@ -62,8 +77,22 @@ func saveCodeToDB(email string, code int) error {
 	return err
 }
 
+func saveUserToDb(user User) error {
+	query := `INSERT INTO users 
+    (email, password, first_name, last_name, organization, country, status, category)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`
+	err := db.Exec(query, user.Email, user.Password, user.FirstName, user.LastName, user.Organization, user.Country, user.Status, user.Category).Error
+	return err
+}
+
 func deleteCodeFromDB(email string) error {
 	query := `delete from otps where email = $1`
+	err := db.Exec(query, email).Error
+	return err
+}
+
+func deleteUserFromDB(email string) error {
+	query := `delete from users where email = $1`
 	err := db.Exec(query, email).Error
 	return err
 }

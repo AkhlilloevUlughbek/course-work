@@ -13,7 +13,8 @@ CREATE TABLE users (
     organization varchar(100) not null ,
     country varchar(100) not null ,
     status varchar(100) not null ,
-    category varchar(100) not null
+    category varchar(100) not null,
+    activated bool default false
 );
 
 
