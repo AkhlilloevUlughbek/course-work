@@ -25,5 +25,13 @@ create table otps(
     created_at timestamp default current_timestamp
 );
 
+create table tokens(
+    token_id serial primary key ,
+    email varchar(100) unique ,
+    token text unique ,
+    created_at timestamp default current_timestamp
+);
+
 drop table users;
 drop table otps;
+drop table tokens;

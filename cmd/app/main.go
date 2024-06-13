@@ -34,6 +34,9 @@ func main() {
 	router.Use(gin.Recovery())
 	router.POST("/users", CreateUser)
 	router.PUT("/users/:otp", ConfirmOTP)
+	router.GET("/users/:email", ResetPassword)
+	router.PUT("/users/reset-password/:email", FinishReset)
+	router.POST("/login", Login)
 
 	err = http.ListenAndServe("localhost:8080", router)
 	if err != nil {
