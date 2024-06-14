@@ -32,6 +32,17 @@ create table tokens(
     created_at timestamp default current_timestamp
 );
 
+create table researches(
+    research_id serial primary key ,
+    title varchar(50),
+    description varchar(200),
+    location varchar(200),
+    user_email varchar(30),
+    category varchar(50),
+    approved bool default false
+);
+
 drop table users;
 drop table otps;
 drop table tokens;
+drop table researches;

@@ -32,11 +32,18 @@ func main() {
 	}
 	router := gin.New()
 	router.Use(gin.Recovery())
+	router.Use(CORS())
 	router.POST("/users", CreateUser)
 	router.PUT("/users/:otp", ConfirmOTP)
 	router.GET("/users/:email", ResetPassword)
 	router.PUT("/users/reset-password/:email", FinishReset)
 	router.POST("/login", Login)
+
+	api := router.Group("/api")
+	api.Use(CheckUser())
+	{
+		api.POST("/new-research", AddResearch)
+	}
 
 	err = http.ListenAndServe("localhost:8080", router)
 	if err != nil {

@@ -65,7 +65,6 @@ func getToken(email string) (Token, error) {
 	var NewToken Token
 	NewToken.Token = tokenString
 	NewToken.Email = email
-	NewToken.ExpirationTime = time.Now().Add(1 * time.Hour)
 	return NewToken, nil
 }
 
@@ -89,8 +88,8 @@ type UserDAO struct {
 }
 
 type Token struct {
-	ID             int       `json:"id"`
-	Token          string    `json:"token"`
-	ExpirationTime time.Time `json:"expiration_time"`
-	Email          string    `json:"user_id"`
+	ID        int       `json:"id"`
+	Email     string    `json:"user_id"`
+	Token     string    `json:"token"`
+	CreatedAt time.Time `json:"created_at"`
 }
