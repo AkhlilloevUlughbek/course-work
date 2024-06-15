@@ -33,6 +33,27 @@ func CheckUser() gin.HandlerFunc {
 	}
 }
 
+func AdminMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		token := c.GetHeader("Token")
+		email := c.GetHeader("Email")
+		err := getTokenFromDB(email, token)
+		if err != nil {
+			log.Println("Token not found, err = ", err)
+			c.JSONP(http.StatusUnauthorized, "Sorry you need to enter you account one more time")
+			return
+		}
+		if email != "kurushqosimi@gmail.com" {
+			log.Println("User are not admin, user = ", email)
+			c.JSONP(http.StatusUnauthorized, "you are not permitted to use this route")
+			return
+		}
+
+		c.Set("email", email)
+		c.Next()
+	}
+}
+
 func getTokenFromDB(email, token string) error {
 	var tok Token
 	query := `select * from tokens where email=$1 and token=$2`

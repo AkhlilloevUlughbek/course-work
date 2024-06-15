@@ -67,7 +67,7 @@ func getResearches(c *gin.Context) {
 
 func getResearchFromDB(email string) ([]Research, error) {
 	var researches []Research
-	query := `select * from researches where user_email = $1`
+	query := `select * from researches where user_email = $1 and approved=true`
 	err := db.Raw(query, email).Scan(&researches).Error
 	if err != nil {
 		return nil, err

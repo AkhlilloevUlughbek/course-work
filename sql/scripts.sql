@@ -48,3 +48,4 @@ drop table tokens;
 drop table researches;
 
 select * from tokens where email='kurushqosimi@gmail.com`' and token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imt1cnVzaHFvc2ltaUBnbWFpbC5jb20iLCJ0aW1lIjoiMjAyNC0wNi0xNVQxMDoxODo0OS4xNTA0ODIyKzA1OjAwIn0.x2c-Ob5xCwZ9ltEdNAYVRNaSokGg6trG5jRKLrmbuy4';
+update researches set approved=true where title='some';

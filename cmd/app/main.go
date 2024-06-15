@@ -46,6 +46,14 @@ func main() {
 		api.GET("/personal-account", PersAccount)
 		api.GET("/user/researches", getResearches)
 		api.GET("/download-research", DownloadResearch)
+		api.GET("/researches/category", getResearchesByCategories)
+	}
+
+	admin := router.Group("/admin")
+	admin.Use(AdminMiddleware())
+	{
+		admin.GET("/not-approved-researches", getNotApproved)
+		admin.POST("/approve", approve)
 	}
 
 	err = http.ListenAndServe("localhost:8080", router)
