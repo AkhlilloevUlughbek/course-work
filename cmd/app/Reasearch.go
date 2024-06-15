@@ -1,16 +1,19 @@
 package main
 
 import (
+	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"log"
+	"net/http"
 )
 
 func AddResearch(c *gin.Context) {
 	var research Research
-	err := c.ShouldBindJSON(&research)
+	jsonData := c.PostForm("json")
+	err := json.Unmarshal([]byte(jsonData), &research)
 	if err != nil {
-		log.Println("Couldn't read data from request body, err = ", err)
-		c.JSONP(400, "something went wrong. Please try again")
+		log.Println("couldn't parse json, err = ", err)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid JSON"})
 		return
 	}
 	if !researchValidate(research) {
@@ -26,13 +29,13 @@ func AddResearch(c *gin.Context) {
 		return
 	}
 
-	err = c.SaveUploadedFile(file, file.Filename+" "+research.Category)
+	err = c.SaveUploadedFile(file, research.Title+" "+research.Category)
 	if err != nil {
 		log.Println("Couldn't save the file, because of err = ", err)
 		c.JSONP(500, "Something went wrong")
 		return
 	}
-	research.Location = file.Filename + " " + research.Category
+	research.Location = research.Title + " " + research.Category
 
 	err = saveResearchToDB(research)
 	if err != nil {

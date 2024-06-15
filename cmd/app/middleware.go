@@ -22,15 +22,15 @@ func CheckUser() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		token := c.GetHeader("Token")
 		email := c.GetHeader("Email")
-		err := getTokenFromDB(token, email)
+		err := getTokenFromDB(email, token)
 		if err != nil {
 			log.Println("Token not found, err = ", err)
 			c.JSONP(http.StatusUnauthorized, "Sorry you need to enter you account one more time")
 			return
 		}
+		c.Set("email", email)
 		c.Next()
 	}
-
 }
 
 func getTokenFromDB(email, token string) error {
@@ -41,10 +41,11 @@ func getTokenFromDB(email, token string) error {
 		return tx.Error
 	}
 	if tx.RowsAffected == 0 {
+		log.Println(tok)
 		return errors.New("nothing here")
 	}
 
-	if time.Now().Sub(tok.CreatedAt) < 24*time.Hour {
+	if time.Now().Sub(tok.CreatedAt) > 24*time.Hour {
 		return errors.New("token invalid")
 	}
 

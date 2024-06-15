@@ -43,6 +43,9 @@ func main() {
 	api.Use(CheckUser())
 	{
 		api.POST("/new-research", AddResearch)
+		api.GET("/personal-account", PersAccount)
+		api.GET("/user/researches", getResearches)
+		api.GET("/download-research", DownloadResearch)
 	}
 
 	err = http.ListenAndServe("localhost:8080", router)

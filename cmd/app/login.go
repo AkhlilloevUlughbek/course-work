@@ -89,7 +89,7 @@ type UserDAO struct {
 
 type Token struct {
 	ID        int       `json:"id"`
-	Email     string    `json:"user_id"`
+	Email     string    `json:"email"`
 	Token     string    `json:"token"`
 	CreatedAt time.Time `json:"created_at"`
 }
